@@ -38,7 +38,7 @@ describe "The /movies/new page" do
       "Expected the new movie form to have an input field of type='hidden' and name='authenticity_token'."
   end
 
-  it "creates a movie successfully", point: 1 do
+  it "creates a movie successfully", points: 1 do
     visit "/movies/new"
 
     fill_in "Title", with: "My test movie"
