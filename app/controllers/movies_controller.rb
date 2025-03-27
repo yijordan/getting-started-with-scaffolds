@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
       the_movie.save
       redirect_to("/movies", { :notice => "Movie created successfully." })
     else
-      redirect_to("/movies", { :alert => the_movie.errors.full_messages.to_sentence })
+      render({ :template => "/movies/new"})    
     end
   end
 
@@ -43,7 +43,7 @@ class MoviesController < ApplicationController
       the_movie.save
       redirect_to("/movies/#{the_movie.id}", { :notice => "Movie updated successfully."} )
     else
-      redirect_to("/movies/#{the_movie.id}", { :alert => the_movie.errors.full_messages.to_sentence })
+      # whoops render({ :template => "/movies/new"})
     end
   end
 
@@ -57,5 +57,6 @@ class MoviesController < ApplicationController
   end
 
   def new
+    @the_movie = Movie.new
   end
 end
