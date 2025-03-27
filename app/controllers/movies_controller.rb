@@ -18,16 +18,16 @@ class MoviesController < ApplicationController
   end
 
   def create
-    the_movie = Movie.new
-    the_movie.title = params.fetch("title")
-    the_movie.description = params.fetch("description")
-    the_movie.released = params.fetch("released")
+    @the_movie = Movie.new
+    @the_movie.title = params.fetch("title")
+    @the_movie.description = params.fetch("description")
+    @the_movie.released = params.fetch("released")
 
-    if the_movie.valid?
-      the_movie.save
+    if @the_movie.valid?
+      @the_movie.save
       redirect_to("/movies", { :notice => "Movie created successfully." })
     else
-      render({ :template => "/movies/new"})    
+      render({ :template => "movies/new"})    
     end
   end
 

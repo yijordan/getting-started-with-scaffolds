@@ -13,7 +13,7 @@
           Title
         </label>
 
-        <input type="text" id="title" name="title">
+        <input type="text" id="title" name="title" value="<%= @the_movie.title %>">
       </div>
 
       <div>
@@ -21,7 +21,7 @@
           Description
         </label>
 
-        <input type="text" id="description" name="description">
+        <input type="text" id="description" name="description" value="<%= @the_movie.description %>">
       </div>
 
       <div>
@@ -29,7 +29,7 @@
           Released
         </label>
 
-        <input type="text" id="released" name="released">
+        <input type="text" id="released" name="released" value="<%= @the_movie.released %>">
       </div>
 
       <button>
