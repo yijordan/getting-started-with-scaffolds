@@ -32,18 +32,18 @@ class MoviesController < ApplicationController
   end
 
   def update
-    the_id = params.fetch("id")
-    the_movie = Movie.where({ :id => the_id })[0]
+    @the_id = params.fetch("id")
+    @the_movie = Movie.where({ :id => the_id })[0]
 
-    the_movie.title = params.fetch("title")
-    the_movie.description = params.fetch("description")
-    the_movie.released = params.fetch("released")
+    @the_movie.title = params.fetch("title")
+    @the_movie.description = params.fetch("description")
+    @the_movie.released = params.fetch("released")
 
-    if the_movie.valid?
-      the_movie.save
-      redirect_to("/movies/#{the_movie.id}", { :notice => "Movie updated successfully."} )
+    if @the_movie.valid?
+      @the_movie.save
+      redirect_to("/movies/#{@the_movie.id}", { :notice => "Movie was successfully updated."} )
     else
-      # whoops render({ :template => "/movies/new"})
+      render({ :template => "/movies/edit"})
     end
   end
 
@@ -58,5 +58,9 @@ class MoviesController < ApplicationController
 
   def new
     @the_movie = Movie.new
+  end
+
+  def edit
+    @the_movie = Movie.where({ :id => params.fetch(:id) }).first
   end
 end
